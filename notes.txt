@@ -1,0 +1,42 @@
+Init: Run npm init -y to create package.json.
+Entry: Create index.js with a simple server.
+Script: Add a start script to package.json.
+Optional: Install Express with npm install express.
+Run: Start with node index.js or npm start; use npx nodemon index.js for auto-reload.
+
+
+in index.js 
+
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
+
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+);
+
+add this to package.json0
+ "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+
+nodemon server.js
+
+app.listen(process.env.port, () => {
+  console.log("Server running on", process.env.port)});
+
+
+  frony extended
+
+  npm create vite@latest .   
