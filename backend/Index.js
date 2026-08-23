@@ -3,17 +3,19 @@ import cors from "cors";
 import dotenv from "dotenv";
 import sequelize from "./config/db.js";
 dotenv.config();
+import cookieParser from "cookie-parser";
 
 // import products from "./Models.js/ProductsModel.js";
 // import users from "./Models.js/UsersModel.js";
 // import bids from "./Models.js/BidsModel.js";
 import { users, products, bids } from "./Models.js/relation.js";
 import userRoutes from "./Routes/userRoutes.js"; 
+import productRoutes from "./Routes/productRoutes.js";
 
 const app = express(); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(cookieParser());
 app.use(
   cors({
     origin: ["http://localhost:5173"],
@@ -40,6 +42,7 @@ async function testConnection() {
 testConnection();
 
 app.use("/api", userRoutes);
+app.use("/api", productRoutes);
 
 
 // app.listen(process.env.port, () => {

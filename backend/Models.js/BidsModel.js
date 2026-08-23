@@ -11,6 +11,22 @@ const bids = sequelize.define("bids", {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
     },
+    productId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "products",
+            key: "id",
+        },
+    },
+    userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: "users",
+            key: "id",
+        },
+    },  
 },
     {
         timestamps: true,
