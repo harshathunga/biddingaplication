@@ -29,7 +29,7 @@ export const postProducts = async ({
       category,
       startingPrice,
       imageUrl,
-      // endTime
+      endTime
     });
 
     return { status: 200, message: "Product added successfully" };

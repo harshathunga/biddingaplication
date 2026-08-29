@@ -11,6 +11,7 @@ import cookieParser from "cookie-parser";
 import { users, products, bids } from "./Models.js/relation.js";
 import userRoutes from "./Routes/userRoutes.js"; 
 import productRoutes from "./Routes/productRoutes.js";
+import bidsRoutes from "./Routes/bidsRoutes.js";
 
 const app = express(); 
 app.use(express.json());
@@ -43,7 +44,7 @@ testConnection();
 
 app.use("/api", userRoutes);
 app.use("/api", productRoutes);
-
+app.use("/api", bidsRoutes);
 
 // app.listen(process.env.port, () => {
 //   console.log("Server running on", process.env.port)});

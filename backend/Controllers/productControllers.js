@@ -60,7 +60,7 @@ export const fechproducts = async (req, res) => {
 export const fetchproductbyid = async (req, res) => {
 
     const { id } = req.params;
-    // console.log("Fetching product by ID:", id);
+    console.log("Fetching product by ID:", id);
 
     try{
         const result =  await getProductById({ id });
