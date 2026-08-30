@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import './App.css'
 import Login from './pages/Login.jsx'
+import Products from './pages/Products.jsx'
 import {
   BrowserRouter as Router,
   Route,
@@ -18,15 +19,14 @@ function App() {
       {/* <Layout> */}
         {/* <Router> */}
           <Routes>
-            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/" element={<Login></Login>}></Route>
+            <Route path="/products" element={<Products></Products>}></Route>
     
           </Routes>
-        {/* </Router> */}
+        {/* </Router> */  }
       {/* </Layout> */}
     </BrowserRouter>
-    // <>
-    //  <h1 className="text-3xl font-bold bg-blue-500 text-white p-4">bidding application</h1>
-    // </>
+    
   )
 }
 

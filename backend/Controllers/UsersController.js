@@ -17,14 +17,15 @@ export const register = async (req, res, next) => {
         if(!username || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
-        await registerUser({ username, email, password });
-        res.status(201).json({ message: "User registered successfully" });
+       const result =  await registerUser({ username, email, password });
+       console.log(result)
+        res.status(result.status).json({ message: result.message });
         
     }catch (error) {
         // next(error);
         console.log(error);
-    res.status(500).json({
-        message: "Something went wrong"
+    res.status(result.status).json({
+        message: result.status
     });
     }
 
