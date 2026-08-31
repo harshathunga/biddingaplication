@@ -2,7 +2,8 @@ import { useState } from 'react'
 
 import './App.css'
 import Login from './pages/Login.jsx'
-import Products from './pages/Products.jsx'
+import MyProducts from './pages/MyProducts.jsx'
+import AllProducts from './pages/AllProducts.jsx'
 import {
   BrowserRouter as Router,
   Route,
@@ -19,8 +20,10 @@ function App() {
       {/* <Layout> */}
         {/* <Router> */}
           <Routes>
-            <Route path="/" element={<Login></Login>}></Route>
-            <Route path="/products" element={<Products></Products>}></Route>
+            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/myproducts" element={<MyProducts></MyProducts>}></Route>
+            <Route path="/" element={<AllProducts></AllProducts>}></Route>
+            <Route path="*" element={<div className='flex align-center justify-center mt-10 text-3xl font-bold'>NO ROUTES 404</div>}></Route>
     
           </Routes>
         {/* </Router> */  }

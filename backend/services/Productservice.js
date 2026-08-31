@@ -41,6 +41,16 @@ export const postProducts = async ({
  
 };
 
+export const fetcheveryoneProduct = async ()=>{
+   try{
+        const fetchedallProducts = await products.findAll( );
+        // console.log("Fetched products:", fetchedProducts);
+        return { status: 200, message: "Products fetched successfully", product: fetchedallProducts };
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        return { status: 500, message: "Internal server error" };
+    }
+}
 
 export const getProducts = async ({user_id}) => { 
     try{

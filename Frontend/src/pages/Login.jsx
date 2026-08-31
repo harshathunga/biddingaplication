@@ -30,7 +30,7 @@ function Login() {
       });
       alert(response.message);
 
-      navigate("/products")
+      navigate("/")
 
 
     }

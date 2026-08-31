@@ -1,7 +1,7 @@
 import {
   postProducts,
   getProductById,
-  getProducts, deleteProductById
+  getProducts, deleteProductById, fetcheveryoneProduct
 } from "../services/Productservice.js";
 
 export const addProducts = async (req, res) => {
@@ -33,6 +33,23 @@ export const addProducts = async (req, res) => {
     return res.status(200).json({ message: "Product added successfully" });
   } catch (error) {
     console.error("Error adding product:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export const everyproductfetch =  async (req, res) => {
+  try {
+
+   const result= await fetcheveryoneProduct();
+    res
+      .status(200)
+      .json({
+        message: "Products fetched successfully",
+        data:result.product,
+      });
+    // res.status(200).json({ data:result.product });
+  } catch (error) {
+    console.error("Error fetching products:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
