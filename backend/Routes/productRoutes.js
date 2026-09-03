@@ -12,3 +12,4 @@ router.get("/fetchproduct/:id", verifyToken, fetchproductbyid);
 router.get("/delete/:id", verifyToken, deleteproductbyid);
 // router.post("/login", login);
 export default router;
+

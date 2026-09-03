@@ -35,6 +35,29 @@ export const myProductfetchapi = async () => {
   }
 };
 
+export const ferchproductbyidapi = async (id) => {
+  try{
+    const res = await fetch(`${baseUrl}/fetchproduct/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    const results = await res.json();
+    if (res.status === 401){
+        return { success: false, unauthorized: true, message: "Not logged in" };
+    }
+    if (!res.ok) {
+      return { message: results.message || "Product fetch Failed", success: false };
+    }
+    return { message: results.message || "Product fetch successful", success: true, res:results };
+  } catch(error){
+    console.log(error);
+    return { message: "An error occurred while fetching the product" };
+  }
+}
+
 export const allProductfetchapi = async () => {
   try {
     const res = await fetch(`${baseUrl}/allproduct`, {

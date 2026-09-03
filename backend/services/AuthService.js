@@ -50,7 +50,9 @@ export const loginUser = async ({ email, password }) => {
       { expiresIn: "1h" }
     );
 
-    return { status: 200, message: "Login successful", token, user };
+    const { password: _, ...safeUser } = user.toJSON();
+
+    return { status: 200, message: "Login successful", token, user: safeUser };
   } catch (error) {
     console.error(error);
     return { status: 500, message: "Internal server error" };

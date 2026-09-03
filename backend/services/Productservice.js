@@ -74,7 +74,7 @@ export const getProductById = async ({id}) => {
             include: [{ model: users,
                 //  as: "users",
                  attributes: ["id", "username" ]}],
-        }] });
+        },],order: [[{ model: bids }, "bidAmount", "DESC"]]});
         return { status: 200, message: "Product fetched successfully", product };
     } catch (error) { console.error("Error fetching product by ID:", error);}
     return { status: 500, message: "Internal server error" };

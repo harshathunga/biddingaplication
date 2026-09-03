@@ -67,9 +67,10 @@ function AllProducts() {
                 <p>{product.description}</p>
               </div>
               <div>
-                <button className=" w-auto p-2 border border-black rounded rounded-2xl">
+                <Link to ={`/check/${product.id}`}><button className=" w-auto p-2 border border-black rounded rounded-2xl">
                   check detais
-                </button>
+                </button></Link>
+                
               </div>
             </div>
 
