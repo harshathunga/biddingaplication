@@ -5,7 +5,9 @@ import { placeBid } from '../services/BidsService.js';
 export const placeBidController = async (req, res) => {
 
     const userId= req.user.id;
-    const { productId, bidAmount } = req.body;
+
+    const productId = req.params.id;
+    const { bidAmount } = req.body;
 
     console.log("User ID from token:", userId);
     console.log("Product ID:", productId);

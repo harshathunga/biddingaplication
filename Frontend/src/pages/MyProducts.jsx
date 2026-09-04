@@ -7,6 +7,8 @@ import Navbar from "../Components/Navbar";
 function MyProducts() {
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(true);
+
+  const [addProductmodel, setAddProductmodel] = useState(false);
   const navigate = useNavigate();
   console.log(products);
   useEffect(() => {
@@ -41,14 +43,27 @@ function MyProducts() {
   return (
     <div>
       <Navbar>
-        <Link className="mx-3 p-3 hover:py-5 focus:outline-2 ">Add Products </Link>
+        <button className="mx-3 p-3 hover:py-5 focus:outline-2 " onClick={() => setAddProductmodel(true)}>Add Product</button>
+        {/* <Link  className="mx-3 p-3 hover:py-5 focus:outline-2 ">Add Products </Link> */}
         <Link className="mx-3 p-3 hover:py-5 focus:outline-2 ">Logout</Link>
       </Navbar>
+
+      {addProductmodel && ( <div className="  flex-col fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div>
+            {" "}
+            <button
+              onClick={() => setAddProductmodel(false)}
+              className="text-white text-xl py-5 float-end top-11"
+            >
+              x
+            </button>{" "}
+          </div>
+       </div>)}
       <div className=" flex  items-center justify-center">
         {products.map((product) => (
           <div
             key={product.id}
-            className=" flex  items-center justify-center w-[900px] bg-blue-200 border border-black rounded rounded-2xl"
+            className=" flex  items-center justify-center w-[900px] bg-blue-200 border border-black rounded-2xl"
           >
             <div className="bg-blue-300 mr-9 " id="image">
               <img src={product.imageUrl} alt={product.name}></img>
@@ -66,11 +81,11 @@ function MyProducts() {
                 <p>{product.description}</p>
               </div>
               <div>
-                <Link to ={`/check/${product.id}`}><button className=" w-auto p-2 border border-black rounded rounded-2xl">
+                <Link to ={`/check/${product.id}`}><button className=" w-auto p-2 border border-black  rounded-2xl">
                                   check detais
                                 </button></Link>
                 
-                <button className=" w-auto p-2 mx-2 my-1 border border-black rounded rounded-2xl">delete</button>
+                <button className=" w-auto p-2 mx-2 my-1 border border-black rounded-2xl">delete</button>
               </div>
             </div>
 
@@ -79,7 +94,7 @@ function MyProducts() {
             <p>{product.description}</p>
           </div> */}
           </div>
-          
+
         ))}
       </div>
     </div>
